@@ -14,7 +14,7 @@ from dataset_tools.templates import (
 # * Before uploading to instance #
 ##################################
 PROJECT_NAME: str = "Maize-Weed Image"
-PROJECT_NAME_FULL: str = "Maize-Weed Image"
+PROJECT_NAME_FULL: str = "Maize-Weed Image v2.0"
 HIDE_DATASET = True  # set False when 100% sure about repo quality
 
 ##################################

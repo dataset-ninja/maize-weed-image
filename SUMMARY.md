@@ -1,4 +1,4 @@
-**Maize-Weed Image** is a dataset for an object detection task. It is used in the agricultural industry. 
+**Maize-Weed Image v2.0** is a dataset for an object detection task. It is used in the agricultural industry. 
 
 The dataset consists of 46336 images with 5764 labeled objects belonging to 2 different classes including *maize* and *weed*.
 

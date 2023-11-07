@@ -8,9 +8,9 @@ The dataset was acquired locally in Niger State, North Central Nigeria, covering
 
 ## Data Description
 
-This dataset contains images of maize plants and weed species. The dataset contains 36,874 images in total and is stored in four folders: Annotated Maize-Weed Images, Data Description and Questionnaire, Dry Season Maize Weed Images, and Wet Season Maize Weed Images.
+This dataset contains images of maize plants and weed species. The dataset contains 36,874 (46,336 in v2.0) images in total and is stored in four folders: Annotated Maize-Weed Images, Data Description and Questionnaire, Dry Season Maize Weed Images, and Wet Season Maize Weed Images.
 
-The Dry Season contains 18,187 images captured during the dry season farm survey. The Wet Season contains 18,187 images captured during the wet season farm survey, and the Annotated contains 500 annotated images selected from the Dry Season survey saved in JSON, XML, and txt format. The images of the raw wet and dry seasons were captured using a highresolution digital camera during the Maize-Weed survey carried out on 18 farm locations in the North Central part of Nigeria. In contrast, the annotation of the images was achieved using the Labelmg suite, an open-source annotation tool.
+The Dry Season contains 18,187 (19,600 in v2.0) images captured during the dry season farm survey. The Wet Season contains 18,187 (26,736 in v2.0) images captured during the wet season farm survey, and the Annotated contains 500 annotated images selected from the Dry Season survey saved in JSON, XML, and txt format. The images of the raw wet and dry seasons were captured using a highresolution digital camera during the Maize-Weed survey carried out on 18 farm locations in the North Central part of Nigeria. In contrast, the annotation of the images was achieved using the Labelmg suite, an open-source annotation tool.
 
 ## Experimental Design, Materials and Methods
 
