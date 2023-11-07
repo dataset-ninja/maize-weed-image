@@ -1,12 +1,15 @@
-import supervisely as sly
 import os
-from dataset_tools.convert import unpack_if_archive
-import src.settings as s
-from urllib.parse import unquote, urlparse
-from supervisely.io.fs import get_file_name, get_file_size
 import shutil
+import xml.etree.ElementTree as ET
+from urllib.parse import unquote, urlparse
 
+import supervisely as sly
+from dataset_tools.convert import unpack_if_archive
+from supervisely.io.fs import file_exists, get_file_ext, get_file_name
 from tqdm import tqdm
+
+import src.settings as s
+
 
 def download_dataset(teamfiles_dir: str) -> str:
     """Use it for large datasets to convert them on the instance"""
@@ -69,17 +72,85 @@ def count_files(path, extension):
 def convert_and_upload_supervisely_project(
     api: sly.Api, workspace_id: int, project_name: str
 ) -> sly.ProjectInfo:
-    ### Function should read local dataset and upload it to Supervisely project, then return project info.###
-    raise NotImplementedError("The converter should be implemented manually.")
 
-    # dataset_path = "/local/path/to/your/dataset" # general way
-    # dataset_path = download_dataset(teamfiles_dir) # for large datasets stored on instance
-
-    # ... some code here ...
-
-    # sly.logger.info('Deleting temporary app storage files...')
-    # shutil.rmtree(storage_dir)
-
-    # return project
+    dataset_path = "Maize-Weed Image Dataset"
+    batch_size = 30
+    ds_name = "ds"
+    images_ext = [".jpg", ".jpeg"]
+    ann_ext = ".xml"
 
 
+    def create_ann(image_path):
+        labels = []
+        tags = []
+
+        tag = subfolder_to_tag.get(image_path.split("/")[-2])
+        if tag is not None:
+            tags.append(tag)
+            image_np = sly.imaging.image.read(image_path)[:, :, 0]
+            img_height = image_np.shape[0]
+            img_wight = image_np.shape[1]
+
+        file_name = get_file_name(image_path)
+
+        ann_path = os.path.join(images_path, file_name + ann_ext)
+        if file_exists(ann_path):
+            tree = ET.parse(ann_path)
+            root = tree.getroot()
+
+            img_height = int(root.find(".//height").text)
+            img_wight = int(root.find(".//width").text)
+
+            ann_objects = root.findall(".//object")
+            for curr_object in ann_objects:
+                obj_class_name = curr_object[0].text
+                obj_class = meta.get_obj_class(obj_class_name)
+                left = int(curr_object[4][0].text)
+                top = int(curr_object[4][1].text)
+                right = int(curr_object[4][2].text)
+                bottom = int(curr_object[4][3].text)
+
+                rect = sly.Rectangle(left=left, top=top, right=right, bottom=bottom)
+                label = sly.Label(rect, obj_class)
+                labels.append(label)
+
+        return sly.Annotation(img_size=(img_height, img_wight), labels=labels, img_tags=tags)
+
+
+    maize = sly.ObjClass("maize", sly.Rectangle)
+    weed = sly.ObjClass("weed", sly.Rectangle)
+
+    dry = sly.TagMeta("dry_season", sly.TagValueType.NONE)
+    wet = sly.TagMeta("wet_season", sly.TagValueType.NONE)
+    subfolder_to_tag = {"Dry Season Maize Weed Images": dry, "Wet Season Maize Weed Images": wet, "Annotated Maize-Weed Images": dry}
+    project = api.project.create(workspace_id, project_name, change_name_if_conflict=True)
+    meta = sly.ProjectMeta(obj_classes=[maize, weed], tag_metas=[dry, wet])
+    api.project.update_meta(project.id, meta.to_json())
+
+    dataset = api.dataset.create(project.id, ds_name, change_name_if_conflict=True)
+
+    for subfolder in os.listdir(dataset_path):
+        images_path = os.path.join(dataset_path, subfolder)
+
+        images_names = [
+            im_name for im_name in os.listdir(images_path) if get_file_ext(im_name) in images_ext
+        ]
+
+        progress = sly.Progress(
+            "Create dataset {}, add {} subfolder".format(ds_name, subfolder), len(images_names)
+        )
+
+        for images_names_batch in sly.batched(images_names, batch_size=batch_size):
+            img_pathes_batch = [
+                os.path.join(images_path, image_name) for image_name in images_names_batch
+            ]
+
+            img_infos = api.image.upload_paths(dataset.id, images_names_batch, img_pathes_batch)
+            img_ids = [im_info.id for im_info in img_infos]
+
+            anns = [create_ann(image_path) for image_path in img_pathes_batch]
+            api.annotation.upload_anns(img_ids, anns)
+
+            progress.iters_done_report(len(images_names_batch))
+
+    return project
