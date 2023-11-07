@@ -46,6 +46,6 @@ The dataset contains images of maize crops and their accompanying weeds that alo
 
 <img width="721" alt="maize_preview_1" src="https://github.com/dataset-ninja/maize-weed-image/assets/123257559/34f1c5f6-06ac-4d82-acc2-a0d5e3cccfd4">
 
-<span style="font-size: smaller; font-style: italic;">Image description.</span>
+<span style="font-size: smaller; font-style: italic;">Map of Nigeria showing the Local Government Areas of Niger State surveyed for weeds data capturing.</span>
 
 After data acquisition, the data were filtered to remove noise and outliers from the images. The filtered images were stored in the ‘JPEG’ format, the same as the acquired images to preserve data integrity. Furthermore, the data was annotated with the open-source annotation tool ’LabelImg’ and saved as XML and JSON formats.
