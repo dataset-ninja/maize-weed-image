@@ -55,7 +55,7 @@ PAPER: Optional[Union[str, List[str], Dict[str, str]]] = ["https://www.sciencedi
 BLOGPOST: Optional[Union[str, List[str], Dict[str, str]]] = None
 REPOSITORY: Optional[Union[str, List[str], Dict[str, str]]] = None
 
-CITATION_URL: Optional[str] = "https://data.mendeley.com/datasets/jjbfcckrsp/2"
+CITATION_URL: Optional[str] = "https://www.sciencedirect.com/science/article/pii/S2352340923001488"
 AUTHORS: Optional[List[str]] = [
     "Olayemi Mikail Olaniyi",
     "Muhammadu Tajudeen Salaudeen",
