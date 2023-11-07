@@ -4,7 +4,7 @@ The **Maize-Weed Image** dataset contains 46336 images capturing 5764 labeled ob
 
 ## Objective
 
-The dataset was acquired locally in Niger State, North Central Nigeria, covering four local government areas. The goal is to localize the dataset in order to meet the urgent demands of the local farmers. Due to the varying types of soil and land in those places, the authors found that different agricultural practices were implemented in the various local government districts that were visited. In addition, review of literatures in [paper source](https://www.sciencedirect.com/science/article/pii/S2352340923001488), indicated that data of this nature were not widely available; therefore, the authors had to curate a dataset for the public and save it in a public domain for use. 
+The dataset was acquired locally in Niger State, North Central Nigeria, covering four local government areas. The goal is to localize the dataset in order to meet the urgent demands of the local farmers. Due to the varying types of soil and land in those places, the authors found that different agricultural practices were implemented in the various local government districts that were visited. In addition, a review of literature in [paper sources](https://www.sciencedirect.com/science/article/pii/S2352340923001488) indicated that data of this nature were not widely available; therefore, the authors had to curate a dataset for the public and save it in the public domain for use.
 
 ## Data Description
 
