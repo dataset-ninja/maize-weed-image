@@ -1,5 +1,7 @@
 The **Maize-Weed Image** dataset contains 46336 images capturing 5764 labeled objects categorized into 2 classes: *maize* and *weed*. These high-resolution images were taken during weed surveys in both ***wet_season*** and ***dry_season*** using a digital camera and annotated using Labelmg suite. The dataset is a result of fieldwork across 18 farm locations in North Central Nigeria, part of ongoing research efforts for maize-weed identification in agricultural landscapes.
 
+<i> Please note that this is the second version of the dataset, with an increased number of original images.</i>
+
 ## Objective
 
 The dataset was acquired locally in Niger State, North Central Nigeria, covering four local government areas. The goal is to localize the dataset in order to meet the urgent demands of the local farmers. Due to the varying types of soil and land in those places, the authors found that different agricultural practices were implemented in the various local government districts that were visited. In addition, review of literatures in [paper source](https://www.sciencedirect.com/science/article/pii/S2352340923001488), indicated that data of this nature were not widely available; therefore, the authors had to curate a dataset for the public and save it in a public domain for use. 
