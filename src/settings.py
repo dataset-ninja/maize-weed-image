@@ -15,7 +15,7 @@ from dataset_tools.templates import (
 ##################################
 PROJECT_NAME: str = "Maize-Weed Image"
 PROJECT_NAME_FULL: str = "Maize-Weed Image v2.0"
-HIDE_DATASET = True  # set False when 100% sure about repo quality
+HIDE_DATASET = False  # set False when 100% sure about repo quality
 
 ##################################
 # * After uploading to instance ##
@@ -43,7 +43,7 @@ GITHUB_URL: str = "https://github.com/dataset-ninja/maize-weed-image"
 ##################################
 ### * Optional after uploading ###
 ##################################
-DOWNLOAD_ORIGINAL_URL: Optional[Union[str, dict]] = ["https://data.mendeley.com/datasets/jjbfcckrsp/2"]
+DOWNLOAD_ORIGINAL_URL: Optional[Union[str, dict]] = "https://data.mendeley.com/datasets/jjbfcckrsp/2"
 # Optional link for downloading original dataset (e.g. "https://some.com/dataset/download")
 
 CLASS2COLOR: Optional[Dict[str, List[str]]] = None
