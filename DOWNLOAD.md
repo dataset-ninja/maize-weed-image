@@ -1,6 +1,6 @@
 Dataset **Maize-Weed Image** can be downloaded in [Supervisely format](https://developer.supervisely.com/api-references/supervisely-annotation-json-format):
 
- [Download](https://assets.supervisely.com/remote/eyJsaW5rIjogImZzOi8vYXNzZXRzLzI5MDJfTWFpemUtV2VlZCBJbWFnZS9tYWl6ZS13ZWVkLWltYWdlLURhdGFzZXROaW5qYS50YXIiLCAic2lnIjogIk5MQzlNTmxwVmtmZ0xEb2UxWlp5Mm80SU5tTU5aZld5YmlqTFE2MGF4T0E9In0=)
+ [Download](https://assets.supervisely.com/remote/eyJsaW5rIjogInMzOi8vc3VwZXJ2aXNlbHktZGF0YXNldHMvMjkwMl9NYWl6ZS1XZWVkIEltYWdlL21haXplLXdlZWQtaW1hZ2UtRGF0YXNldE5pbmphLnRhciIsICJzaWciOiAiK28xYlZvOC9seHc1R2RnMm15RHNTWnl6blJUcUNoRlF6UjBMbi8ycnFxND0ifQ==?response-content-disposition=attachment%3B%20filename%3D%22maize-weed-image-DatasetNinja.tar%22)
 
 As an alternative, it can be downloaded with *dataset-tools* package:
 ``` bash
